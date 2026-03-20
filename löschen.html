@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Datenlöschung beantragen – BookaCoach</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 0 20px;
+      color: #333;
+      line-height: 1.7;
+    }
+    h1 { font-size: 1.6em; }
+    p { margin-bottom: 1em; }
+    .form-group { margin-bottom: 1.2em; }
+    label { display: block; font-weight: bold; margin-bottom: 4px; }
+    input[type="text"], input[type="email"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1em;
+      box-sizing: border-box;
+    }
+    button {
+      background-color: #1a73e8;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 1em;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover { background-color: #1558b0; }
+    .note { font-size: 0.9em; color: #666; margin-top: 1.5em; }
+  </style>
+</head>
+<body>
+
+  <h1>Datenlöschung beantragen</h1>
+  <p>Wenn du möchtest, dass dein BookaCoach-Konto und alle damit verbundenen Daten gelöscht werden, fülle das folgende Formular aus. Wir bearbeiten deine Anfrage innerhalb von 30 Tagen.</p>
+
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" id="name" placeholder="Dein Name" />
+  </div>
+
+  <div class="form-group">
+    <label for="email">E-Mail-Adresse (die im App-Konto hinterlegte)</label>
+    <input type="email" id="email" placeholder="deine@email.de" />
+  </div>
+
+  <button onclick="sendRequest()">Löschung beantragen</button>
+
+  <p class="note">
+    Du wirst zu deiner E-Mail-App weitergeleitet. Bitte sende die vorausgefüllte E-Mail ab, um die Anfrage abzuschließen.<br /><br />
+    Alternativ kannst du uns direkt schreiben: <a href="mailto:h.b.schloms@gmail.com">h.b.schloms@gmail.com</a>
+  </p>
+
+  <script>
+    function sendRequest() {
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      if (!name || !email) {
+        alert('Bitte fülle alle Felder aus.');
+        return;
+      }
+      const subject = encodeURIComponent('BookaCoach – Antrag auf Datenlöschung');
+      const body = encodeURIComponent(
+        'Hallo,\n\nich beantrage hiermit die Löschung meines BookaCoach-Kontos und aller damit verbundenen Daten.\n\nName: ' + name + '\nE-Mail: ' + email + '\n\nMit freundlichen Grüßen'
+      );
+      window.location.href = 'mailto:h.b.schloms@gmail.com?subject=' + subject + '&body=' + body;
+    }
+  </script>
+
+</body>
+</html>
